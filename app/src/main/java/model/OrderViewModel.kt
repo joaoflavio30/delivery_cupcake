@@ -31,7 +31,7 @@ class OrderViewModel : ViewModel() {
     val dateOptions = getPickupOptions()
 
     init {
-        date.value = dateOptions[0]
+        resetOrder()
     }
 
     fun setQuantity(quantityCupcake: Int) {
@@ -57,6 +57,8 @@ class OrderViewModel : ViewModel() {
             subTotal.value = ((quantity.value ?: 0) * 2 + 3).toDouble()
         } else {
             subTotal.value = ((quantity.value ?: 0) * 2).toDouble()
+
+
         }
 
 
@@ -71,5 +73,12 @@ class OrderViewModel : ViewModel() {
             calendar.add(Calendar.DATE, 1)
         }
         return options
+    }
+
+    fun resetOrder(){
+        date.value = dateOptions[0]
+        flavor.value = ""
+        subTotal.value = 0.0
+
     }
 }
